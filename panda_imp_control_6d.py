@@ -11,9 +11,9 @@ data = mujoco.MjData(model)
 K_d = np.diag([200, 200, 200, 10, 10, 10])  # Position (N/m) and orientation (Nm/rad)
 B_d = np.diag([30, 30, 30, 3, 3, 3])        # Damping (Ns/m and Nms/rad)
 
-# Desired base position and orientation (identity quaternion)
+# Desired base position and orientation
 x_base = np.array([0.5, 0.0, 0.3])
-quat_d = np.array([1.0, 0.0, 0.0, 0.0])  # w, x, y, z = no rotation
+quat_d = np.array([1.0, 0.0, 0.0, 0.0])  # w, x, y, z 
 
 
 panda_joint_names = [f"panda0_joint{i+1}" for i in range(7)]
