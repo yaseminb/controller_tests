@@ -63,12 +63,10 @@ with mujoco.viewer.launch_passive(model, data) as viewer:
 
         wrench = K_d @ error_6d + B_d @ derror_6d
 
-        # Jacobians into 6xnv matrix
         J_full = np.vstack([J_pos, J_rot])
 
         tau = J_full.T @ wrench
 
-        # add gravity/Coriolis terms
         mujoco.mj_rnePostConstraint(model, data)
         tau += data.qfrc_bias
 
