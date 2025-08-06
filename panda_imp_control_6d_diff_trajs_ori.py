@@ -8,13 +8,11 @@ from scipy.spatial.transform import Rotation as R
 model = mujoco.MjModel.from_xml_path("models/panda.xml")
 data = mujoco.MjData(model)
 
-# Control parameters - 6D Cartesian space
 K_pos = np.diag([200.0, 200.0, 200.0])
 B_pos = np.diag([30.0, 30.0, 30.0])
 K_ori = np.diag([10.0, 10.0, 10.0])
 B_ori = np.diag([1.0, 1.0, 1.0])
 
-# center of motion
 x_base = np.array([0.5, 0.0, 0.3])
 
 panda_joint_names = [f"panda0_joint{i+1}" for i in range(7)]
@@ -27,7 +25,6 @@ mujoco.mj_resetData(model, data)
 dt = model.opt.timestep
 sim_time = 0.0
 
-# ===== Trajectory Functions =====
 def circular_trajectory(t):
     radius = 0.1
     omega = 2 * np.pi / 10
